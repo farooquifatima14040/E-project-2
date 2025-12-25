@@ -21,13 +21,14 @@
                 <li><a href="#for-events">For Events</a></li>
                 <li><a href="#site-map">Site Map</a></li>
                 <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#create-account" style="font-weight: bolder;">Create An Account</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to <span>The Cake Bakery</span></h1>
+            <h1>Welcome to <span>"The Cake"</span></h1>
             <p>Because every celebration deserves sweetness</p>
             <a href="#all-products" class="btn">Explore Our Cakes</a>
         </div>
@@ -148,33 +149,50 @@
 
     <h2 id="for-events" class="occ-heading">Customized Cakes: Order in Advance</h2>
     <div class="category-container">
-        <div class="category-card">
+        <a href="ind-birthday.html" class="category-card">
             <img src="birthday.jfif" alt="Birthday">
-            <h3><a href="ind-birthday.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Birthday Cakes ➜</a></h3>
-        </div>
-        <div class="category-card">
+            <div class="category-info">
+                <h3>Birthday Cakes ➜</h3>
+            </div>
+        </a>
+
+        <a href="ind-anniversary.html" class="category-card">
             <img src="anniversary.jfif" alt="Anniversary">
-            <h3><a href="ind-anniversary.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Anniversary Cakes ➜</a></h3>
-        </div>
-        <div class="category-card">
+            <div class="category-info">
+                <h3>Anniversary Cakes ➜</h3>
+            </div>
+        </a>
+
+        <a href="ind-wedding.html" class="category-card">
             <img src="wedding0.1.jfif" alt="Wedding">
-            <h3><a href="ind-wedding.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Wedding Cakes ➜</a></h3>
-        </div>
-        <div class="category-card">
+            <div class="category-info">
+                <h3>Wedding Cakes ➜</h3>
+            </div>
+        </a>
+
+        <a href="ind-engagement.html" class="category-card">
             <img src="engagement.jfif" alt="Engagement">
-            <h3><a href="ind-engagement.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Engagement Party Cakes ➜</a></h3>
-        </div>
-        <div class="category-card">
+            <div class="category-info">
+                <h3>Engagement Party ➜</h3>
+            </div>
+        </a>
+
+        <a href="ind-babyshower.html" class="category-card">
             <img src="baby.jfif" alt="Baby Shower">
-            <h3><a href="ind-babyshower.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Baby Shower Cakes ➜</a></h3>
-        </div>
-        <div class="category-card">
+            <div class="category-info">
+                <h3>Baby Shower Cakes ➜</h3>
+            </div>
+        </a>
+
+        <a href="ind-graduation.html" class="category-card">
             <img src="graduation.jfif" alt="Graduation">
-            <h3><a href="ind-graduation.html" class="arrow-btn" style="margin: 0 0 5px; color: #F9F7F2;">Graduation Party Cakes ➜</a></h3>
-        </div>
+            <div class="category-info">
+                <h3>Graduation Cakes ➜</h3>
+            </div>
+        </a>
     </div>
 
-   <section class="sitemap-modern">
+   <section class="sitemap-modern" id="site-map">
         <div class="sitemap-header">
             <span class="eyebrow">Navigation</span>
             <h2>Explore Our <span>Bakery</span></h2>
@@ -215,31 +233,42 @@
     <section id="contact" class="contact-modern">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-branding">
-                    <span class="eyebrow">Get in Touch</span>
-                    <h2>Let’s make your <br>celebration <span>extraordinary</span>.</h2>
-                    <p class="contact-desc">From bespoke wedding cakes to weekend treats, our team is here to help you choose the perfect flavor.</p>
-                    <div class="contact-details">
-                        <div class="detail-line">
-                            <label>Location</label>
-                            <div id="map-container" style="height: 200px; width: 100%; background: #eee; border-radius: 10px; margin-top: 10px;">
-                                <p id="location-text" style="padding: 20px;">Loading office location...</p>
-                            </div>
-                        </div>
-                        <div class="detail-line">
-                            <label>Inquiries</label>
-                            <p><a href="tel:+1234567890" style="color: inherit; text-decoration: none;">+1 234 567 890</a></p>
-                            <p><a href="mailto:hello@thecakebakery.com" style="color: inherit; text-decoration: none;">hello@thecakebakery.com</a></p>
+                <div class="contact-left">
+                    <div class="contact-branding">
+                        <span class="eyebrow">Get in Touch</span>
+                        <h2>Let’s make your <br>celebration <span>extraordinary</span>.</h2>
+                        <p class="contact-desc">From bespoke wedding cakes to weekend treats, our team is here to help you choose the perfect flavor.</p>
+                    </div>
+                    
+                    <div class="map-wrapper">
+                        <label class="detail-label" style="margin-bottom: 20px; font-weight: 2rem;">Our Boutique Location:</label>
+                        <div id="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.241264871843!2d-73.98784368459377!3d40.75797477932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1625500000000!5m2!1sen!2sus" 
+                                width="100%" height="100%" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy">
+                            </iframe>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-container">
-                    <form class="boutique-form">
-                        <div class="form-row"><input type="text" placeholder="Full Name" required></div>
-                        <div class="form-row"><input type="email" placeholder="Email Address" required></div>
-                        <div class="form-row"><textarea placeholder="Tell us about your event..." rows="4" required></textarea></div>
-                        <button type="submit" class="btn-minimal">Request a Consultation</button>
-                    </form>
+
+                <div class="contact-right">
+                    <div class="inquiry-box">
+                        <label class="detail-label">Direct Inquiries</label>
+                        <div class="inquiry-links">
+                            <a href="tel:+1234567890">+1 234 567 890</a>
+                            <span class="separator">|</span>
+                            <a href="mailto:hello@thecakebakery.com">hello@thecakebakery.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form class="boutique-form">
+                            <div class="form-row"><input type="text" placeholder="Full Name" required></div>
+                            <div class="form-row"><input type="email" placeholder="Email Address" required></div>
+                            <div class="form-row"><textarea placeholder="Tell us about your event..." rows="4" required></textarea></div>
+                            <button type="submit" class="btn-minimal">Request a Consultation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -288,7 +317,7 @@
             </div>
             <div class="order-card">
                 <h3>Step 5</h3>
-                <p>Order is placed successfully and delivered on your selected date.</p>
+                <p>Order is placed successfully, take a screenshot of the given reciept.</p>
             </div>
         </div>
     </section>

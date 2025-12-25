@@ -36,4 +36,4 @@
     const cleanPrice = cake.price.replace(/,/g, '');
     const url = `purchase.html?code=${encodeURIComponent(cake.code)}&title=${encodeURIComponent(cake.title)}&price=${cleanPrice}`;
     window.open(url, 'PurchaseWindow', 'width=900,height=850,scrollbars=yes,resizable=yes');
-}
+    }

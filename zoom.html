@@ -34,7 +34,6 @@
             color: var(--primary-maroon);
             margin-bottom: 20px;
         }
-        
         .btn-order-now {
             background-color: var(--primary-maroon);
             color: white;
@@ -42,14 +41,13 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            flex: 1; /* Makes button grow to fill space */
+            flex: 1;
             transition: 0.3s;
         }
         .btn-order-now:hover {
             background-color: #4b1636;
             color: white;
         }
-
         .btn-back {
             background-color: transparent;
             color: var(--primary-maroon);
@@ -64,7 +62,6 @@
             background-color: var(--primary-maroon);
             color: white;
         }
-
         .img-display {
             border-radius: 15px;
             width: 100%;
@@ -90,7 +87,7 @@
                 <h5 class="fw-bold">Description:</h5>
                 <p id="displayDesc"></p>
 
-                <ul class="list-unstyled">
+                <ul class="list-unstyled mb-4">
                     <li><strong>Shape:</strong> <span id="displayShape"></span></li>
                     <li><strong>Flavour:</strong> <span id="displayFlavour"></span></li>
                     <li><strong>Texture:</strong> <span id="displayTexture"></span></li>
@@ -98,22 +95,9 @@
                     <li><strong>Best For:</strong> <span id="displayBestfor"></span></li>
                 </ul>
 
-                <div class="mb-3">
-                    <label class="form-label small fw-bold">Quantity</label>
-                    <div class="quantity-controls d-flex align-items-center gap-2">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="decreaseQty()">-</button>
-                        <input type="text" id="modal-qty-cheese" value="1" readonly class="form-control text-center" style="width: 50px;">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="increaseQty()">+</button>
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <input type="text" class="form-control mb-3" placeholder="Message to write on cake...">
-                    
-                    <div class="d-flex gap-3">
-                        <button class="btn-back" onclick="window.close()">Back to Gallery</button>
-                        <button class="btn-order-now">Order Now</button>
-                    </div>
+                <div class="d-flex gap-3">
+                    <button class="btn-back" onclick="window.close()">Back to Gallery</button>
+                    <button class="btn-order-now" onclick="goToPurchase()">Order Now</button>
                 </div>
             </div>
         </div>
@@ -135,20 +119,15 @@
     document.getElementById('displayFrosting').innerText = params.get('frosting');
     document.getElementById('displayBestfor').innerText = params.get('bestfor');
 
-    function increaseQty() {
-        const qtyInput = document.getElementById('modal-qty-cheese');
-        let currentVal = parseInt(qtyInput.value);
-        qtyInput.value = currentVal + 1;
-    }
+    function goToPurchase() {
+        const title = document.getElementById('displayTitle').innerText;
+        const price = document.getElementById('displayPrice').innerText.replace('PKR ', '').replace(/,/g, '');
+        const code = document.getElementById('displayCode').innerText.replace('Code: ', '');
 
-    function decreaseQty() {
-        const qtyInput = document.getElementById('modal-qty-cheese');
-        let currentVal = parseInt(qtyInput.value);
-        if (currentVal > 1) {
-            qtyInput.value = currentVal - 1;
-        }
-    }
+        const url = `purchase.html?code=${encodeURIComponent(code)}&title=${encodeURIComponent(title)}&price=${price}&qty=1`;
 
+        window.location.href = url;
+    }
 </script>
 
 </body>

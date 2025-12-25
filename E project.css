@@ -1,8 +1,8 @@
 :root {
-    --primary-plum: #6D214F;
-    --secondary-rose: #D4A5A5;
-    --bg-cream: #F9F7F2;
-    --text-charcoal: #2F3640;
+    --primary: #540863;
+    --secondary: #E49BA6;
+    --background: #FFD3D5;
+    --text: #92487A;
 }
 
 body {
@@ -10,11 +10,11 @@ body {
     padding: 0;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-cream);
+    background-color: var(--background);
 }
 
 .navbar {
-    background-color: var(--bg-cream);
+    background-color: var(--background);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,7 +37,7 @@ body {
 .logo {
     font-family: 'Pacifico', cursive;
     font-size: 1.8rem;
-    color: var(--primary-plum);
+    color: var(--primary);
 }
 
 .nav-links {
@@ -50,7 +50,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-charcoal);
+    color: var(--text);
     font-weight: 500;
 }
 
@@ -59,7 +59,7 @@ body {
     display: block;
     width: 0;
     height: 2px;
-    background: var(--primary-plum);
+    background: var(--primary);
     transition: width .3s;
 }
 
@@ -73,7 +73,7 @@ body {
     align-items: center;
     padding: 100px 60px; 
     gap: 80px; 
-    background: linear-gradient(to bottom right, var(--primary-plum), var(--secondary-rose));
+    background: linear-gradient(to bottom right, var(--primary), var(--secondary));
     min-height: 85vh;
 }
 
@@ -84,17 +84,17 @@ body {
 .hero h1 {
     font-family: 'Pacifico', cursive;
     font-size: 3rem;
-    color: var(--bg-cream);
+    color: var(--background);
     margin-bottom: 15px;
 }
 
 .hero h1 span {
-    color: var(--bg-cream);
+    color: var(--background);
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: var(--bg-cream);
+    color: var(--background);
     margin-bottom: 25px;
 }
 
@@ -121,12 +121,13 @@ body {
 .btn {
     display: inline-block;
     padding: 12px 30px;
-    background-color: var(--bg-cream);
-    color: var(--primary-plum);
+    background-color: var(--background);
+    color: var(--primary);
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s ease;
+    margin-left: 120px;
 }
 
 .btn:hover {
@@ -140,30 +141,34 @@ body {
 }
 
 .info-section h2 {
+    text-align: center;
+    margin: 40px 0;
+    font-family: 'Pacifico', cursive;
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--primary-plum);
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .info-section p {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
     line-height: 1.7;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #3E2723;
 }
 
 #about-us {
     padding: 80px 60px;
-    background-color: var(--bg-cream);
+    background-color: var(--background);
 }
 
 .about-heading {
     text-align: center;
+    margin: 40px 0;
     font-family: 'Pacifico', cursive;
-    font-size: 2.3rem;
-    margin-bottom: 50px;
-    color: var(--primary-plum);
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .grid-container {
@@ -173,11 +178,11 @@ body {
 }
 
 .grid-item {
-    background-color: var(--secondary-rose);
-    border: 2px double var(--primary-plum);
-    color: var(--text-charcoal);
+    background-color: var(--secondary);
+    border: 2px double var(--primary);
+    color: var(--text);
     padding: 25px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 12px;
     text-align: center;
     transition: 0.3s ease;
@@ -190,8 +195,9 @@ body {
 
 .grid-item h3 {
     text-decoration: underline;
+    font-family: 'Pacifico', cursive;
     margin-bottom: 15px;
-    color: var(--primary-plum);
+    color: var(--primary);
 }
 
 .section-title {
@@ -199,7 +205,7 @@ body {
     margin: 40px 0;
     font-family: 'Pacifico', cursive;
     font-size: 2.5rem;
-    color: var(--primary-plum);
+    color: var(--primary);
     text-decoration: underline;
 }
 
@@ -239,8 +245,8 @@ body {
 
 .btn-details {
     background-color: transparent;
-    border: 2px solid var(--primary-plum);
-    color: var(--primary-plum);
+    border: 2px solid var(--primary);
+    color: var(--primary);
     padding: 8px 20px;
     border-radius: 5px;
     font-weight: 600;
@@ -250,12 +256,12 @@ body {
 }
 
 .btn-details:hover { 
-    background-color: var(--primary-plum); 
+    background-color: var(--primary); 
     color: white; 
 }
 
 .btn-order {
-    background-color: var(--primary-plum);
+    background-color: var(--primary);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -271,51 +277,103 @@ body {
 
 .occ-heading {
     text-align: center;
-    margin: 60px 0 30px;
-    font-size: 28px;
-    color: var(--primary-plum);
+    margin: 40px 0;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .category-container {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: center;
-    gap: 40px;
-    padding: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .category-card {
-    width: 350px;
+    position: relative;
+    text-decoration: none; /* Removes underline from links */
     height: 500px;
-    padding: 15px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: var(--secondary-rose);
+    border-radius: 25px; /* Bubbly curves */
+    overflow: hidden;
+    background-color: var(--surface);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    display: block;
+}
+
+.category-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .category-card img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    transition: transform 0.6s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Dark gradient overlay so the white text pops */
+.category-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+    z-index: 1;
+}
+
+.category-info {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
 }
 
 .category-card h3 {
-    margin: 15px 0 5px;
-    color: var(--primary-plum);
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.category-card:hover h3 {
+    color: var(--secondary); /* Text changes color on hover */
 }
 
 .arrow-btn {
     display: inline-block;
     font-size: 22px;
     text-decoration: none;
-    color: var(--bg-cream);
+    color: var(--background);
     cursor: pointer;
+}
+
+.sitemap-header{
+    text-align: center;
+    margin: 40px 0;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .sitemap-modern {
     padding: 100px 20px;
-    background-color: var(--bg-cream);
+    background-color: var(--background);
     text-align: center;
 }
 
@@ -348,7 +406,7 @@ body {
 
 .box-title {
     text-decoration: none;
-    color: var(--primary-plum);
+    color: var(--primary);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -373,19 +431,19 @@ body {
 
 .sub-links li a {
     text-decoration: none;
-    color: var(--text-charcoal);
+    color: var(--text);
     font-size: 0.9rem;
     transition: color 0.3s;
 }
 
 .sub-links li a:hover {
-    color: var(--primary-plum);
+    color: var(--primary);
 }
 
 .sitemap-box:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(109, 33, 79, 0.1);
-    border-color: var(--secondary-rose);
+    border-color: var(--secondary);
 }
 
 .sitemap-box.has-sub:hover {
@@ -399,7 +457,7 @@ body {
     opacity: 1;
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px dashed var(--secondary-rose);
+    border-top: 1px dashed var(--secondary);
 }
 
 @media (max-width: 600px) {
@@ -410,25 +468,62 @@ body {
 
 .contact-modern {
     padding: 120px 0;
-    background-color: var(--bg-cream);
-    color: var(--text-charcoal);
+    background-color: var(--background);
+    color: var(--text);
 }
 
 .contact-modern .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 60px 80px;
-    background-color: var(--secondary-rose);
-    border: var(--primary-plum) solid 1px;
+    background-color: var(--secondary);
+    border: var(--primary) solid 1px;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(109, 33, 79, 0.05);
 }
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
-    align-items: center;
+    grid-template-columns: 1.1fr 0.9fr; /* Balanced columns */
+    gap: 60px;
+    align-items: start; /* Align to top so map doesn't stretch weirdly */
+}
+
+.map-wrapper {
+    margin-top: 30px;
+}
+
+#map-container {
+    height: 250px; /* Adjusted height */
+    width: 100%;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(109, 33, 79, 0.1);
+}
+
+.inquiry-box {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(109, 33, 79, 0.1);
+}
+
+.inquiry-links a {
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.inquiry-links a:hover {
+    color: var(--primary);
+}
+
+.separator {
+    margin: 0 10px;
+    color: var(--soft-pink);
+    opacity: 0.5;
 }
 
 .eyebrow {
@@ -445,40 +540,28 @@ body {
     font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 25px;
-    color: var(--text-charcoal);
+    color: var(--text);
+}
+
+.contact-form-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
 }
 
 .contact-branding h2 span {
     font-family: 'Pacifico', cursive;
-    color: var(--primary-plum);
+    color: var(--primary);
 }
 
 .contact-desc {
     font-size: 1rem;
     line-height: 1.8;
-    color: #57606f;
+    color: #92487A;
     margin-bottom: 40px;
 }
 
-.detail-line {
-    margin-bottom: 25px;
-}
-
-.detail-line label {
-    display: block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #4b1636;
-    margin-bottom: 5px;
-}
-
-.detail-line p, .detail-line a {
-    font-size: 1.1rem;
-    color: var(--text-charcoal);
-    text-decoration: none;
-    font-weight: 500;
-}
 
 .boutique-form .form-row {
     margin-bottom: 30px;
@@ -498,13 +581,13 @@ body {
 
 .boutique-form input:focus, 
 .boutique-form textarea:focus {
-    border-color: var(--primary-plum);
+    border-color: var(--primary);
     background: #fff;
     box-shadow: 0 4px 10px rgba(109, 33, 79, 0.05);
 }
 
 .btn-minimal {
-    background-color: var(--primary-plum);
+    background-color: var(--primary);
     color: #fff;
     border: none;
     padding: 16px 0;
@@ -526,16 +609,16 @@ body {
 .main-container {
     height: 700px;
     width: 100%;
-    background: linear-gradient(135deg, var(--primary-plum), var(--secondary-rose));
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .ca-container {
-    height: 565px;
+    height: 575px;
     width: 800px;
-    background-color: var(--bg-cream);
+    background-color: var(--background);
     border-radius: 20px;
     display: flex;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -544,7 +627,7 @@ body {
 
 .left {
     width: 50%;
-    background: linear-gradient(180deg, var(--secondary-rose), var(--primary-plum));
+    background: linear-gradient(180deg, var(--secondary), var(--primary));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -562,11 +645,11 @@ body {
 }
 
 .right h2 {
-    color: var(--primary-plum);
+    color: var(--primary);
 }
 
 .right p {
-    color: var(--text-charcoal);
+    color: var(--text);
     margin-bottom: 25px;
 }
 
@@ -575,15 +658,15 @@ body {
     padding: 12px;
     margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid var(--secondary-rose);
+    border: 1px solid var(--secondary);
     background: #fff;
     outline: none;
-    color: var(--text-charcoal);
+    color: var(--text);
 }
 
 .forgot {
     font-size: 13px;
-    color: var(--text-charcoal);
+    color: var(--text);
     text-align: right;
     margin-bottom: 20px;
     cursor: pointer;
@@ -594,7 +677,7 @@ body {
     padding: 12px;
     border-radius: 10px;
     border: none;
-    background: var(--primary-plum);
+    background: var(--primary);
     color: white;
     cursor: pointer;
 }
@@ -602,18 +685,18 @@ body {
 .divider {
     text-align: center;
     margin: 20px 0;
-    color: var(--text-charcoal);
+    color: var(--text);
 }
 
 .google-btn {
     width: 100%;
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid var(--secondary-rose);
+    border: 1px solid var(--secondary);
     background: white;
     cursor: pointer;
     font-weight: bold;
-    color: var(--text-charcoal);
+    color: var(--text);
 }
 
 .register {
@@ -622,52 +705,98 @@ body {
 }
 
 .register span {
-    color: var(--primary-plum);
+    color: var(--primary);
     font-weight: bold;
     cursor: pointer;
 }
 
 .order-section {
-    background-color: var(--bg-cream);
-    padding: 80px 40px;
+    background-color: var(--background); /* This stays dark to make the white cards pop */
+    padding: 100px 40px;
     text-align: center;
 }
 
 .order-section h2 {
+    text-align: center;
+    margin: 40px 0;
     font-family: 'Pacifico', cursive;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: var(--primary-plum);
-}
-
-.order-subtitle {
-    margin-bottom: 40px;
-    color: #3E2723;
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .order-steps {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .order-card {
+    position: relative;
     width: 220px;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-    transition: 0.3s;
+    height: 180px; /* Fixed height so they all match */
+    background: #FFFFFF; /* CLEAN WHITE CARD */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    border: none; /* Removed the old borders */
+}
+
+.order-card h3 {
+    color: #6A1B9A; /* DEEP PURPLE for the Step Number */
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.order-card p {
+    color: #4A148C; /* SLIGHTLY DARKER PURPLE for the Instructions */
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Updated Arrow - Placed specifically between cards */
+.order-card:not(:last-child)::after {
+    content: '➔';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #540863; /* White arrow to be visible on dark background */
+    font-weight: bold;
+    z-index: 5;
 }
 
 .order-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
+    background: #F3E5F5; /* Very light purple tint on hover */
+}
+
+/* For mobile: hide arrows and center everything */
+@media (max-width: 1200px) {
+    .order-card:not(:last-child)::after {
+        display: none;
+    }
+    .order-steps {
+        flex-direction: column;
+        gap: 30px;
+    }
 }
 
 .site-footer {
-    background: linear-gradient(135deg, var(--primary-plum), var(--secondary-rose));
-    color: var(--bg-cream);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--background);
     padding: 50px 20px 20px;
 }
 
@@ -688,20 +817,20 @@ body {
 .footer-section h4 {
     margin-bottom: 12px;
     font-size: 18px;
-    color: var(--bg-cream);
+    color: var(--background);
 }
 
 .footer-section p,
 .footer-section a {
     font-size: 14px;
-    color: var(--bg-cream);
+    color: var(--background);
     text-decoration: none;
     line-height: 1.6;
 }
 
 .footer-section a:hover {
     text-decoration: underline;
-    color: var(--text-charcoal);
+    color: var(--text);
 }
 
 .footer-bottom {
@@ -710,7 +839,7 @@ body {
     font-size: 13px;
     border-top: 1px solid rgba(255,255,255,0.3);
     padding-top: 15px;
-    color: var(--bg-cream);
+    color: var(--background);
 }
 
 @media (max-width: 1100px) {

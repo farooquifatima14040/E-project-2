@@ -150,34 +150,27 @@ function openPurchase(index) {
     window.open(url, 'PurchaseWindow', 'width=900,height=850,scrollbars=yes,resizable=yes');
 }
 
-function showLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            console.log("Latitude: " + position.coords.latitude);
-            console.log("Longitude: " + position.coords.longitude);
-        });
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
+// Boutique Form Handling
+const contactForm = document.querySelector('.boutique-form');
 
-showLocation();
-
-const loginForm = document.querySelector('#create-account form');
-
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-        const email = loginForm.querySelector('input[type="email"]').value;
-        const password = loginForm.querySelector('input[type="password"]').value;
-
-        if (email === "" || password === "") {
-            alert("All fields are mandatory!");
-            e.preventDefault();
-        } else if (password.length < 6) {
-            alert("Password must be at least 6 characters long.");
-            e.preventDefault();
-        } else {
-            alert("Welcome back! Redirecting to your dashboard...");
-        }
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Simple success feedback
+        const btn = contactForm.querySelector('button');
+        const originalText = btn.innerText;
+        
+        btn.innerText = "Message Sent!";
+        btn.style.backgroundColor = "#27ae60";
+        
+        alert("Thank you! Our consultants will contact you shortly.");
+        
+        contactForm.reset();
+        
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.style.backgroundColor = "";
+        }, 3000);
     });
 }
