@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Details | The Cake</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-maroon: #6D214F;
+            --soft-pink: #D4A5A5;
+            --off-white: #F9F7F2;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            padding: 50px 0;
+        }
+        .detail-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .cake-title {
+            font-family: 'Pacifico', cursive;
+            color: var(--primary-maroon);
+            font-size: 3rem; 
+        }
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-maroon);
+            margin-bottom: 20px;
+        }
+        
+        .btn-order-now {
+            background-color: var(--primary-maroon);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            flex: 1; /* Makes button grow to fill space */
+            transition: 0.3s;
+        }
+        .btn-order-now:hover {
+            background-color: #4b1636;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: var(--primary-maroon);
+            padding: 12px 20px;
+            border: 2px solid var(--primary-maroon);
+            border-radius: 8px;
+            font-weight: 600;
+            flex: 1;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background-color: var(--primary-maroon);
+            color: white;
+        }
+
+        .img-display {
+            border-radius: 15px;
+            width: 100%;
+            object-fit: cover;
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="detail-container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img id="displayImg" src="" alt="Cake Image" class="img-display shadow">
+            </div>
+            
+            <div class="col-md-6">
+                <h1 id="displayTitle" class="cake-title"></h1>
+                <p class="text-muted"><span id="displayCode"></span> | Egg Type: With Egg</p>
+                <div id="displayPrice" class="price-tag"></div>
+                
+                <h5 class="fw-bold">Description:</h5>
+                <p id="displayDesc"></p>
+
+                <ul class="list-unstyled">
+                    <li><strong>Shape:</strong> <span id="displayShape"></span></li>
+                    <li><strong>Flavour:</strong> <span id="displayFlavour"></span></li>
+                    <li><strong>Texture:</strong> <span id="displayTexture"></span></li>
+                    <li><strong>Frosting:</strong> <span id="displayFrosting"></span></li>
+                    <li><strong>Best For:</strong> <span id="displayBestfor"></span></li>
+                </ul>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Quantity</label>
+                    <div class="quantity-controls d-flex align-items-center gap-2">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="decreaseQty()">-</button>
+                        <input type="text" id="modal-qty-cheese" value="1" readonly class="form-control text-center" style="width: 50px;">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="increaseQty()">+</button>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <input type="text" class="form-control mb-3" placeholder="Message to write on cake...">
+                    
+                    <div class="d-flex gap-3">
+                        <button class="btn-back" onclick="window.close()">Back to Gallery</button>
+                        <button class="btn-order-now">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    
+    document.getElementById('displayImg').src = params.get('img');
+    document.getElementById('displayTitle').innerText = params.get('title');
+    document.getElementById('displayCode').innerText = "Code: " + params.get('code');
+    document.getElementById('displayPrice').innerText = "PKR " + params.get('price');
+    document.getElementById('displayDesc').innerText = params.get('desc');
+    
+    document.getElementById('displayShape').innerText = params.get('shape');
+    document.getElementById('displayFlavour').innerText = params.get('flavour');
+    document.getElementById('displayTexture').innerText = params.get('texture');
+    document.getElementById('displayFrosting').innerText = params.get('frosting');
+    document.getElementById('displayBestfor').innerText = params.get('bestfor');
+
+    function increaseQty() {
+        const qtyInput = document.getElementById('modal-qty-cheese');
+        let currentVal = parseInt(qtyInput.value);
+        qtyInput.value = currentVal + 1;
+    }
+
+    function decreaseQty() {
+        const qtyInput = document.getElementById('modal-qty-cheese');
+        let currentVal = parseInt(qtyInput.value);
+        if (currentVal > 1) {
+            qtyInput.value = currentVal - 1;
+        }
+    }
+
+</script>
+
+</body>
+</html>

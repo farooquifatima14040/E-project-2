@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Order | The Cake</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-maroon: #6D214F;
+            --soft-pink: #D4A5A5;
+            --off-white: #F9F7F2;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-pink);
+            padding: 30px;
+        }
+        .order-container {
+            background: white;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        .header-strip {
+            background: var(--primary-maroon);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header-strip h2 { font-family: 'Pacifico', cursive; margin: 0; }
+        
+        .form-section { padding: 30px; }
+        .section-title {
+            color: var(--primary-maroon);
+            font-weight: 600;
+            border-bottom: 2px solid var(--soft-pink);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        /* Gift Box Styles */
+        .gift-box {
+            background: var(--off-white);
+            border: 2px dashed var(--primary-maroon);
+            padding: 20px;
+            border-radius: 10px;
+            display: none; /* Hidden by default */
+        }
+        
+        /* Payment & Delivery Box Styles */
+        .option-box {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .option-box:hover { background-color: #f9f9f9; }
+        .option-box input[type="radio"]:checked + span {
+            color: var(--primary-maroon);
+            font-weight: bold;
+        }
+        
+        /* Card Details Animation */
+        .card-details-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+        }
+
+        .btn-submit {
+            background-color: var(--primary-maroon);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .btn-submit:hover { background-color: #4b1636; }
+
+        /* --- RECEIPT POPUP STYLES --- */
+        .receipt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none; /* Hidden initially */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .receipt-paper {
+            background: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            font-family: 'Courier New', Courier, monospace; /* Receipt font */
+            text-align: center;
+        }
+        .receipt-header { border-bottom: 2px dashed #000; padding-bottom: 15px; margin-bottom: 15px; }
+        .receipt-items { text-align: left; margin-bottom: 15px; min-height: 100px;}
+        .receipt-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .receipt-total { border-top: 2px dashed #000; padding-top: 10px; font-weight: bold; font-size: 1.2rem; }
+        .btn-close-receipt { margin-top: 20px; background: #333; color: white; border: none; padding: 10px 20px; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="order-container">
+    <div class="header-strip">
+        <h2>Checkout</h2>
+    </div>
+
+    <form class="form-section" id="orderForm" onsubmit="handleOrder(event)">
+        
+        <h4 class="section-title">Your Cart</h4>
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Cake Name</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody"></tbody>
+        </table>
+
+        <div class="row g-2 align-items-center mb-4 p-2 bg-light rounded">
+            <div class="col-8">
+                <select id="extraCakeSelect" class="form-select form-select-sm">
+                    <option value="" selected disabled>Add another cake...</option>
+                    <option value="DC-001|Cheese Cake|3000">Cheese Cake (DC-001)</option>
+                    <option value="DC-002|Red Velvet Cake|3500">Red Velvet Cake (DC-002)</option>
+                    <option value="DC-003|Rose Gold Cake|3200">Rose Gold Cake (DC-003)</option>
+                    <option value="DC-004|Caramel Crunch Cake|3400">Caramel Crunch Cake (DC-004)</option>
+                    <option value="DC-005|Naked Lemon Cake|3000">Naked Lemon Cake (DC-005)</option>
+                    <option value="DC-006|Dutch Truffle Cake|3100">Dutch Truffle Cake (DC-006)</option>
+                    <option value="DC-007|Velvet Cocoa Indulgence Cake|4500">Velvet Cocoa Indulgence Cake (DC-007)</option>
+                    <option value="DC-008|Madagascar Vanilla Bean Cake|3500">Madagascar Vanilla Bean Cake (DC-008)</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-sm btn-secondary w-100" onclick="addExtraItem()">Add</button>
+            </div>
+        </div>
+
+        <h4 class="section-title">Delivery Method</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="option-box w-100">
+                    <input type="radio" name="deliveryMethod" value="delivery" checked onclick="toggleDelivery(true)">
+                    <span>🚚 Home Delivery</span>
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label class="option-box w-100">
+                    <input type="radio" name="deliveryMethod" value="pickup" onclick="toggleDelivery(false)">
+                    <span>🏪 Store Pickup</span>
+                </label>
+            </div>
+        </div>
+
+        <h4 class="section-title">Details</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Name</label>
+                <input type="text" id="cName" class="form-control" required placeholder="Your Name">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Contact</label>
+                <input type="tel" class="form-control" required placeholder="03XXXXXXXXX" pattern="[0-9]{11}">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Date Needed</label>
+                <input type="date" class="form-control" required>
+            </div>
+            <div class="col-md-12 mb-3" id="addressBox">
+                <label>Delivery Address</label>
+                <textarea class="form-control" id="dAddress" rows="2" placeholder="House #, Street, Area..."></textarea>
+            </div>
+        </div>
+
+        <h4 class="section-title">Gift Options</h4>
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="giftToggle" onchange="toggleGiftSection()">
+            <label class="form-check-label fw-bold" for="giftToggle">Send this order as a Gift?</label>
+        </div>
+
+        <div id="giftDetails" class="gift-box">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">To (Recipient Name)</label>
+                    <input type="text" class="form-control" placeholder="Recipient's Name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">From (Your Name)</label>
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Gift Message</label>
+                    <textarea class="form-control" rows="3" placeholder="Write a sweet note..."></textarea>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="giftWrap">
+                        <label class="form-check-label" for="giftWrap">Add Premium Gift Wrapping (+PKR 200)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hideInvoice" checked>
+                        <label class="form-check-label" for="hideInvoice">Don't include invoice in package</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="section-title">Payment</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="option-box w-100">
+                    <input type="radio" name="paymentMethod" value="cod" checked onclick="togglePayment('cod')">
+                    <span>💵 Cash on Delivery</span>
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label class="option-box w-100">
+                    <input type="radio" name="paymentMethod" value="card" onclick="togglePayment('card')">
+                    <span>💳 Card Payment</span>
+                </label>
+            </div>
+        </div>
+
+        <div id="cardDetails" class="card-details-box">
+            <h6 class="mb-3 text-muted">Enter Card Details</h6>
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <input type="text" class="form-control" placeholder="Card Number (0000 0000 0000 0000)">
+                </div>
+                <div class="col-6 mb-3">
+                    <input type="text" class="form-control" placeholder="MM/YY">
+                </div>
+                <div class="col-6 mb-3">
+                    <input type="text" class="form-control" placeholder="CVV">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Place Order & Get Receipt</button>
+    </form>
+</div>
+
+<div id="receiptOverlay" class="receipt-overlay">
+    <div class="receipt-paper">
+        <div class="receipt-header">
+            <h3>The Cake Shop</h3>
+            <p>Order Receipt</p>
+            <small id="receiptDate">Date: 25/12/2025</small>
+        </div>
+        
+        <div class="receipt-items" id="receiptContent">
+            </div>
+
+        <div class="receipt-row">
+            <span>Payment:</span>
+            <span id="receiptPaymentType">COD</span>
+        </div>
+        
+        <div class="receipt-total">
+            <div class="receipt-row">
+                <span>TOTAL:</span>
+                <span>PKR <span id="receiptTotal">0</span></span>
+            </div>
+        </div>
+        
+        <p class="mt-3 small">Thank you for ordering, <span id="receiptName">User</span>!</p>
+        <button class="btn-close-receipt" onclick="closeReceipt()">Close Window</button>
+    </div>
+</div>
+
+<script>
+    // --- CART LOGIC ---
+    let cart = [];
+
+    // Load initial item from URL
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        if(params.get('code')) {
+            cart.push({
+                code: params.get('code'),
+                title: params.get('title') || 'Cake',
+                price: parseInt(params.get('price').replace(/,/g, '')) || 0,
+                qty: 1
+            });
+            renderCart();
+        }
+    };
+
+    function addExtraItem() {
+        const val = document.getElementById('extraCakeSelect').value;
+        if(!val) return;
+        const [code, title, price] = val.split('|');
+        
+        const exists = cart.find(item => item.code === code);
+        if(exists) exists.qty++;
+        else cart.push({ code, title, price: parseInt(price), qty: 1 });
+        
+        renderCart();
+    }
+
+    function renderCart() {
+        const tbody = document.getElementById('cartTableBody');
+        tbody.innerHTML = '';
+        let grandTotal = 0;
+
+        cart.forEach((item, index) => {
+            grandTotal += item.price * item.qty;
+            tbody.innerHTML += `
+                <tr>
+                    <td><small>${item.code}</small><br>${item.title}</td>
+                    <td>${item.price}</td>
+                    <td><input type="number" class="form-control form-control-sm" style="width:60px" value="${item.qty}" min="1" onchange="updateQty(${index}, this.value)"></td>
+                    <td><b>${item.price * item.qty}</b></td>
+                    <td><button type="button" class="btn-close" onclick="removeItem(${index})"></button></td>
+                </tr>`;
+        });
+        document.getElementById('receiptTotal').innerText = grandTotal.toLocaleString();
+        return grandTotal;
+    }
+
+    function updateQty(i, val) { cart[i].qty = parseInt(val); renderCart(); }
+    function removeItem(i) { cart.splice(i, 1); renderCart(); }
+
+    // Toggle Gift Section Visibility
+    function toggleGiftSection() {
+        const giftBox = document.getElementById('giftDetails');
+        const isChecked = document.getElementById('giftToggle').checked;
+        giftBox.style.display = isChecked ? 'block' : 'none';
+    }
+
+    // --- UI TOGGLES ---
+    function toggleDelivery(isDelivery) {
+        const box = document.getElementById('addressBox');
+        const field = document.getElementById('dAddress');
+        if(isDelivery) {
+            box.style.display = 'block';
+            field.setAttribute('required', 'true');
+        } else {
+            box.style.display = 'none';
+            field.removeAttribute('required');
+        }
+    }
+
+    function togglePayment(method) {
+        const cardBox = document.getElementById('cardDetails');
+        if(method === 'card') {
+            cardBox.style.display = 'block';
+            // Scroll to card details smoothly
+            cardBox.scrollIntoView({behavior: "smooth"});
+        } else {
+            cardBox.style.display = 'none';
+        }
+    }
+
+    // --- RECEIPT GENERATION ---
+    function handleOrder(e) {
+        e.preventDefault();
+        
+        if(cart.length === 0) { alert("Cart is empty!"); return; }
+
+        // 1. Show the Alert
+        alert("Order Successfully Placed! Generating Receipt...");
+
+        // 2. Populate Receipt Data
+        const name = document.getElementById('cName').value;
+        document.getElementById('receiptName').innerText = name;
+        document.getElementById('receiptDate').innerText = "Date: " + new Date().toLocaleDateString();
+        
+        // Get Payment Method Text
+        const isCard = document.querySelector('input[name="paymentMethod"]:checked').value === 'card';
+        document.getElementById('receiptPaymentType').innerText = isCard ? "Card Payment (Paid)" : "Cash on Delivery";
+
+        // Generate Receipt Rows
+        let listHtml = '';
+        cart.forEach(item => {
+            listHtml += `
+            <div class="receipt-row">
+                <span>${item.title} (x${item.qty})</span>
+                <span>${item.price * item.qty}</span>
+            </div>`;
+        });
+        document.getElementById('receiptContent').innerHTML = listHtml;
+
+        // 3. Show Overlay
+        document.getElementById('receiptOverlay').style.display = 'flex';
+    }
+
+    function closeReceipt() {
+        window.close(); // Close the browser window
+    }
+</script>
+
+</body>
+</html>
