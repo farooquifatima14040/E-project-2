@@ -1,19 +1,18 @@
-        :root {
-            --primary-maroon: #6D214F;
-            --soft-pink: #D4A5A5;
-            --off-white: #F9F7F2;
-            --dark-text: #2F3640;
-        }
+:root {
+    --primary: #4A0E0E;
+    --secondary: #F39D9D;
+    --background: #ffdede;
+    --text: #8B0000;
+}
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--soft-pink);
+            background: var(--secondary);
             margin: 0;
         }
 
-        /* --- NAVBAR --- */
         .navbar {
-            background-color: var(--off-white);
+            background-color: var(--background);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -27,7 +26,7 @@
         .logo {
             font-family: 'Pacifico', cursive;
             font-size: 1.8rem;
-            color: var(--primary-maroon);
+            color: var(--primary);
             text-decoration: none;
         }
 
@@ -40,82 +39,95 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-text);
+            color: var(--primary);
             font-weight: 500;
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--primary-maroon); }
+        .nav-links a:hover { color: var(--primary); }
 
         .section-title {
             text-align: center;
             margin: 40px 0;
             font-family: 'Pacifico', cursive;
             font-size: 2.5rem;
-            color: var(--primary-maroon);
+            color: var(--primary);
             text-decoration: underline;
         }
 
-        .products-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            justify-items: center;
-            gap: 40px;
-            padding: 20px 60px 60px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center; /* Changed from justify-items for better centering */
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px; /* Reduced width to make it more compact and elegant */
+    margin: 0 auto;
+    /* height: 1250px;  <-- DELETE THIS LINE ENTIRELY */
+}
 
-        .product-card {
-            width: 350px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+.product-card {
+    width: 350px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    /* This ensures cards don't stretch vertically if one cake is taller than another */
+    align-self: start; 
+}
 
-        .product-card:hover { transform: translateY(-10px); }
+.product-card:hover { transform: translateY(-10px); }
 
-        .product-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
+.product-card img {
+    width: 100%;
+    height: 400px;
+    /* FIX: 'contain' ensures multi-tiered cakes aren't cut off at the top */
+    object-fit: contain; 
+    background-color: #fdfdfd; /* Very subtle grey so white cakes don't disappear */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
 
-        .btn-details {
-            background-color: transparent;
-            border: 2px solid var(--primary-maroon);
-            color: var(--primary-maroon);
-            padding: 8px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+/* KEEPING YOUR ORIGINAL BUTTON STYLE */
+.btn-details {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
 
-        .btn-details:hover { 
-            background-color: var(--primary-maroon); 
-            color: white; 
-        }
+.btn-details:hover { 
+    background-color: var(--primary); 
+    color: white; 
+}
 
-        .btn-order {
-            background-color: var(--primary-maroon);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-        }
+.btn-order {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-order:hover {
+    background-color: #4b1636;
+    transform: scale(1.05);
+}
         
-        /* --- FOOTER --- */
         .site-footer {
-            background: linear-gradient(135deg, var(--primary-maroon), #4b1636);
+            background: linear-gradient(135deg, var(--primary), #4b1636);
             color: white;
             padding: 60px 20px 20px;
         }
+
         .footer-container { display: flex; 
             flex-wrap: wrap; 
             justify-content: space-around; 

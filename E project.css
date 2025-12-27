@@ -1,8 +1,12 @@
 :root {
-    --primary: #540863;
-    --secondary: #E49BA6;
-    --background: #FFD3D5;
-    --text: #92487A;
+    --primary: #4A0E0E;
+    --secondary: #F39D9D;
+    --background: #ffdede;
+    --text: #8B0000;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -13,6 +17,7 @@ body {
     background-color: var(--background);
 }
 
+/* ----Navbar / Header---- */
 .navbar {
     background-color: var(--background);
     display: flex;
@@ -21,10 +26,7 @@ body {
     padding: 15px 60px;
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0; 
     width: 100%;
-    box-sizing: border-box;
     transition: transform 0.4s ease-in-out; 
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     z-index: 9999;
@@ -40,6 +42,23 @@ body {
     color: var(--primary);
 }
 
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: var(--primary);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--background);
+    border-radius: 2px;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -50,8 +69,9 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text);
+    color: var(--primary);
     font-weight: 500;
+    position: relative;
 }
 
 .nav-links a::after {
@@ -67,25 +87,31 @@ body {
     width: 100%;
 }
 
+/* ----Banner / Hero---- */
 .hero {
-    display: flex;
-    justify-content: center;
+display: flex;
+    justify-content: center; 
     align-items: center;
-    padding: 100px 60px; 
-    gap: 80px; 
-    background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+    padding: 120px 5%;
+    gap: 50px; 
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
     min-height: 85vh;
 }
 
 .hero-content {
-    max-width: 500px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;  
 }
 
 .hero h1 {
     font-family: 'Pacifico', cursive;
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     color: var(--background);
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .hero h1 span {
@@ -96,6 +122,7 @@ body {
     font-size: 1.2rem;
     color: var(--background);
     margin-bottom: 25px;
+    text-align: center;
 }
 
 .hero-carousel-frame {
@@ -109,7 +136,8 @@ body {
 
 .hero-carousel-frame .carousel-inner, 
 .hero-carousel-frame .carousel-item {
-    height: 100%;
+    width: 400px;
+    height: 450px;
 }
 
 .hero-carousel-frame img {
@@ -120,19 +148,42 @@ body {
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 12px 35px;
     background-color: var(--background);
     color: var(--primary);
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s ease;
-    margin-left: 120px;
+    margin: 20px auto 0;
 }
 
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ----Brieft Information---- */
+.about-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 80px 5%;
+    max-width: 1400px; 
+    margin: 0 auto;
+}
+
+.about-card h3 {
+    color: var(--primary);
+    font-family: 'Pacifico', cursive;
+    font-size: 2.2rem; 
+    margin-bottom: 25px;
+}
+
+.about-card p {
+    font-size: 1.1rem; 
+    line-height: 1.8;   
+    color: var(--text);
 }
 
 .info-section {
@@ -154,9 +205,10 @@ body {
     margin: auto;
     line-height: 1.7;
     font-size: 1.2rem;
-    color: #3E2723;
+    color: var(--primary);
 }
 
+/* ----About Us---- */
 #about-us {
     padding: 80px 60px;
     background-color: var(--background);
@@ -173,14 +225,18 @@ body {
 
 .grid-container {
     display: grid;
+    gap: 30px;
+    padding: 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
 }
 
 .grid-item {
     background-color: var(--secondary);
     border: 2px double var(--primary);
     color: var(--text);
+    font-weight: 900;
     padding: 25px;
     font-size: 18px;
     border-radius: 12px;
@@ -197,9 +253,10 @@ body {
     text-decoration: underline;
     font-family: 'Pacifico', cursive;
     margin-bottom: 15px;
-    color: var(--primary);
+    color: #631616;
 }
 
+/* ----Daily Products---- */
 .section-title {
     text-align: center;
     margin: 40px 0;
@@ -211,12 +268,11 @@ body {
 
 .products-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    justify-items: center;
     gap: 30px;
-    padding: 20px 60px 60px;
+    padding: 40px 5%;
     max-width: 1400px;
     margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .product-card {
@@ -275,6 +331,7 @@ body {
     opacity: 0.9;
 }
 
+/* ----Products By Events---- */
 .occ-heading {
     text-align: center;
     margin: 40px 0;
@@ -286,18 +343,18 @@ body {
 
 .category-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    padding: 20px 60px;
+    padding: 40px 5%;
     max-width: 1400px;
     margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .category-card {
     position: relative;
-    text-decoration: none; /* Removes underline from links */
+    text-decoration: none; 
     height: 500px;
-    border-radius: 25px; /* Bubbly curves */
+    border-radius: 25px; 
     overflow: hidden;
     background-color: var(--surface);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
@@ -317,10 +374,9 @@ body {
 }
 
 .category-card:hover img {
-    transform: scale(1.1); /* Zoom effect on hover */
+    transform: scale(1.1); 
 }
 
-/* Dark gradient overlay so the white text pops */
 .category-card::after {
     content: '';
     position: absolute;
@@ -351,7 +407,7 @@ body {
 }
 
 .category-card:hover h3 {
-    color: var(--secondary); /* Text changes color on hover */
+    color: var(--secondary); 
 }
 
 .arrow-btn {
@@ -362,110 +418,160 @@ body {
     cursor: pointer;
 }
 
-.sitemap-header{
-    text-align: center;
-    margin: 40px 0;
-    font-family: 'Pacifico', cursive;
-    font-size: 2.5rem;
-    color: var(--primary);
-    text-decoration: underline;
-}
-
-.sitemap-modern {
+/* ----Site Map---- */
+.sitemap-visual-section {
     padding: 100px 20px;
     background-color: var(--background);
-    text-align: center;
-}
-
-.sitemap-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; 
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
-.sitemap-box {
-    background: white;
-    margin-top: 40px;
-    width: 220px; 
-    min-height: 80px; 
+.sitemap-wrapper {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.sitemap-main-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sitemap-main-title h2 {
+    font-family: 'Pacifico', cursive;
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.sitemap-main-title span {
+    color: var(--text);
+}
+
+.sitemap-master-header {
+    background: var(--primary);
+    padding: 15px;
+    text-align: center;
+    border-radius: 50px; 
+    margin-bottom: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sitemap-master-header a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.sitemap-column {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.category-circle {
+    width: 140px;
+    height: 140px;
+    background-color: var(--background);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border-radius: 15px;
-    border: 1px solid rgba(109, 33, 79, 0.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    padding: 10px;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    border: 2px solid var(--primary);
+    z-index: 5;
 }
 
-.box-title {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    z-index: 2;
-}
-
-.sub-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 0;
-    opacity: 0;
-    transition: all 0.4s ease;
-    width: 100%;
-    text-align: center;
-}
-
-.sub-links li {
-    margin: 10px 0;
-}
-
-.sub-links li a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.sub-links li a:hover {
-    color: var(--primary);
-}
-
-.sitemap-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(109, 33, 79, 0.1);
+.category-circle:hover {
+    transform: scale(1.1);
+    background-color: var(--primary);
     border-color: var(--secondary);
 }
 
-.sitemap-box.has-sub:hover {
-    min-height: 180px;
-    justify-content: flex-start;
-    padding-top: 25px;
+.main-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    transition: color 0.3s;
 }
 
-.sitemap-box.has-sub:hover .sub-links {
-    max-height: 200px;
+.category-circle:hover .main-link {
+    color: white;
+}
+
+.sub-menu {
+    position: absolute;
+    top: 150px; 
+    width: 180px;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 4;
+}
+
+.sitemap-column:hover .sub-menu {
     opacity: 1;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed var(--secondary);
+    visibility: visible;
+    transform: translateY(0);
 }
 
-@media (max-width: 600px) {
-    .sitemap-box {
-        width: 100%; 
-    }
+.sub-menu li {
+    margin-bottom: 5px;
 }
 
+.sub-menu li a {
+    display: block;
+    background: white;
+    color: var(--text);
+    padding: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid var(--secondary);
+    transition: 0.3s;
+}
+
+.sub-menu li a:hover {
+    background: var(--background);
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+.nested-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    display: none;
+}
+
+.nested-parent:hover .nested-menu {
+    display: block;
+}
+
+.nested-menu li a {
+    background: #fff8f8;
+    font-size: 0.75rem;
+    border-style: dashed;
+}
+
+/* ----Contact US With GeoLocation API---- */
 .contact-modern {
     padding: 120px 0;
     background-color: var(--background);
@@ -484,9 +590,9 @@ body {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr; /* Balanced columns */
+    grid-template-columns: 1.1fr 0.9fr; 
     gap: 60px;
-    align-items: start; /* Align to top so map doesn't stretch weirdly */
+    align-items: start; 
 }
 
 .map-wrapper {
@@ -494,7 +600,7 @@ body {
 }
 
 #map-container {
-    height: 250px; /* Adjusted height */
+    height: 250px; 
     width: 100%;
     background: #eee;
     border-radius: 10px;
@@ -530,7 +636,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: #4b1636;
+    color: var(--primary);
     font-weight: 700;
     display: block;
     margin-bottom: 20px;
@@ -558,7 +664,7 @@ body {
 .contact-desc {
     font-size: 1rem;
     line-height: 1.8;
-    color: #92487A;
+    color: var(--text);
     margin-bottom: 40px;
 }
 
@@ -606,9 +712,10 @@ body {
     transform: translateY(-2px);
 }
 
+/* ----Create An Account---- */
 .main-container {
-    height: 700px;
-    width: 100%;
+    min-height: 700px;
+    padding: 20px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
@@ -710,8 +817,9 @@ body {
     cursor: pointer;
 }
 
+/* ----Dummy Procedure For Buying---- */
 .order-section {
-    background-color: var(--background); /* This stays dark to make the white cards pop */
+    background-color: var(--background); 
     padding: 100px 40px;
     text-align: center;
 }
@@ -738,8 +846,8 @@ body {
 .order-card {
     position: relative;
     width: 220px;
-    height: 180px; /* Fixed height so they all match */
-    background: #FFFFFF; /* CLEAN WHITE CARD */
+    height: 180px; 
+    background: #FFFFFF; 
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -747,25 +855,24 @@ body {
     flex-direction: column;
     justify-content: center;
     transition: transform 0.3s ease;
-    border: none; /* Removed the old borders */
+    border: none; 
 }
 
 .order-card h3 {
-    color: #6A1B9A; /* DEEP PURPLE for the Step Number */
+    color: var(--primary); 
     margin-bottom: 10px;
     font-size: 1.5rem;
     font-family: 'Poppins', sans-serif;
 }
 
 .order-card p {
-    color: #4A148C; /* SLIGHTLY DARKER PURPLE for the Instructions */
+    color: var(--primary); 
     font-size: 0.95rem;
     line-height: 1.4;
     font-weight: 500;
     margin: 0;
 }
 
-/* Updated Arrow - Placed specifically between cards */
 .order-card:not(:last-child)::after {
     content: '➔';
     position: absolute;
@@ -773,27 +880,17 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 24px;
-    color: #540863; /* White arrow to be visible on dark background */
+    color: var(--secondary); 
     font-weight: bold;
     z-index: 5;
 }
 
 .order-card:hover {
     transform: translateY(-10px);
-    background: #F3E5F5; /* Very light purple tint on hover */
+    background: var(--secondary); 
 }
 
-/* For mobile: hide arrows and center everything */
-@media (max-width: 1200px) {
-    .order-card:not(:last-child)::after {
-        display: none;
-    }
-    .order-steps {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
+/* ----Footer---- */
 .site-footer {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--background);
@@ -842,47 +939,283 @@ body {
     color: var(--background);
 }
 
-@media (max-width: 1100px) {
-    .products-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* ==========================================================================
+   NAVBAR RESPONSIVENESS (Laptop, Tablet, Phone)
+   ========================================================================== */
 
-@media (max-width: 900px) {
-    .contact-modern .container {
-        padding: 40px 25px;
-        margin: 0 15px;
+/* TABLETS & PHONES (1024px and below) */
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: flex; /* Button appears for Tablets now */
     }
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-    .contact-branding h2 { font-size: 2.2rem; }
-}
 
-@media (max-width: 768px) {
-    .hero {
+    .nav-links {
+        display: none; /* Links hide for Tablets now */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--background);
         flex-direction: column;
-        text-align: center;
-        padding: 80px 20px;
+        align-items: center;
+        padding: 40px 20px;
+        gap: 30px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-top: 1px solid var(--secondary);
     }
-    .hero-carousel-frame {
-        width: 300px;
-        height: 350px;
+
+    /* When JavaScript adds the 'active' class */
+    .nav-links.active {
+        display: flex;
     }
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-    .category-container {
-        grid-template-columns: 1fr;
+
+    .navbar {
+        padding: 15px 5%;
     }
 }
 
-@media (max-width: 600px) {
-    .products-container {
-        grid-template-columns: 1fr;
-    }
+/* --- TIER 3: PHONES (480px) --- */
+@media (max-width: 480px) {
     .navbar {
-        padding: 15px 20px;
+        padding: 10px 20px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   HERO / BANNER RESPONSIVENESS (Laptop, Tablet, Phone)
+   ========================================================================== */
+
+/* 1. LAPTOP / DESKTOP (Default - 1024px and up) */
+@media (max-width: 1200px) {
+    .hero {
+        gap: 30px; 
+    }
+}
+
+/* 2. TABLETS (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column; /* Stack them vertically */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .hero-content {
+        order: 2; /* Text goes under the image */
+    }
+    
+    .hero-carousel-frame {
+        order: 1; /* Image goes on top */
+        width: 350px;
+        height: 400px;
+    }
+}
+
+/* 3. PHONES (max-width: 600px) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 100px 20px 50px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-carousel-frame {
+        width: 280px;
+        height: 320px;
+    }
+}
+
+/* ==========================================================================
+   INFO RESPONSIVENESS (Laptop, Tablet, Phone)
+   ========================================================================== */
+
+/* --- TIER 1: LARGE TABLETS / SMALL LAPTOP (1024px) --- */
+@media (max-width: 1024px) {
+    .about-grid-container {
+        gap: 40px;
+        max-width: 95%;
+    }
+    
+    .about-card p {
+        font-size: 1.05rem; /* Only a tiny bit smaller than laptop */
+    }
+}
+
+/* --- TIER 2: TABLETS PORTRAIT (768px) --- */
+@media (max-width: 768px) {
+    .about-grid-container {
+        grid-template-columns: 1fr 1fr; /* Keep side-by-side */
+    }
+
+    .about-card p {
+        font-size: 1rem;
+        /* Limits text to 5 lines so columns stay even */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+/* --- TIER 3: PHONES (480px) --- */
+@media (max-width: 480px) {
+    .about-grid-container {
+        grid-template-columns: 1fr; /* Stack vertically */
+        padding: 40px 25px;
+    }
+
+    .about-card:nth-child(2) h3 {
+        display: none; /* Merges the sections into one story */
+    }
+
+    .about-card p {
+        display: block; /* Removes the line-clamp from tablet tier */
+        font-size: 0.95rem; /* Still readable but fits the screen width */
+        line-height: 1.6;
+    }
+
+    .about-card h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================================================
+   ABOUT US SECTION RESPONSIVENESS
+   ========================================================================== */
+
+/* --- TIER 1 & 2: LAPTOP & TABLET (Keep your current Grid) --- */
+@media (min-width: 601px) {
+    .carousel-dots { display: none; } 
+}
+
+/* --- TIER 3: PHONES (800px and below) --- */
+@media (max-width: 700px) {
+    .about-carousel-container {
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .grid-container {
+        display: flex; 
+        transition: transform 0.5s ease-in-out;
+        gap: 0; 
+        padding: 20px 0;
+    }
+
+    .grid-item {
+        min-width: 100%; 
+        box-sizing: border-box;
+        transform: scale(0.9); 
+    }
+
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background-color: var(--secondary);
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: var(--primary);
+    }
+}
+
+/* ==========================================================================
+   DAILY PRODUCTS RESPONSIVENESS
+   ========================================================================== */
+/* 1. LAPTOP / DESKTOP (Default - 1024px and up) */
+
+
+
+/* ==========================================================================
+   SITEMAP RESPONSIVENESS
+   ========================================================================== */
+
+/* 1. LAPTOP / DESKTOP (Default - 1024px and up) */
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+/* 2. TABLETS (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .sitemap-wrapper {
+        max-width: 90%;
+    }
+    
+    .sitemap-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 40px;
+    }
+
+    .category-circle {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* 3. PHONES (max-width: 600px) */
+@media (max-width: 600px) {
+    .sitemap-main-title h2 {
+        font-size: 2rem;
+    }
+
+    .sitemap-master-header {
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    .sitemap-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .sub-menu {
+        position: relative; 
+        top: 0;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 10px 0;
+        display: none; 
+    }
+
+
+    .sitemap-column:hover .sub-menu,
+    .sitemap-column:active .sub-menu {
+        display: block;
+    }
+
+
+    .nested-menu {
+        position: relative;
+        left: 0;
+        width: 100%;
+        display: block; 
+    }
+
+    .category-circle {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
     }
 }

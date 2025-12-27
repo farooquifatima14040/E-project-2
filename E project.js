@@ -1,3 +1,4 @@
+// ----Navbar / Header----
 let lastScrollY = window.scrollY;
 const navbar = document.querySelector('.navbar');
 
@@ -10,9 +11,42 @@ window.addEventListener("scroll", () => {
     lastScrollY = window.scrollY;
 });
 
+    const menu = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    menu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+});
+
+// ----about us----
+let currentIndex = 0;
+
+function currentSlide(index) {
+    const slider = document.getElementById('about-slider');
+    const dots = document.querySelectorAll('.dot');
+    
+    // Move the slider
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    
+    // Update dots
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+    
+    currentIndex = index;
+}
+
+// Optional: Auto-slide every 5 seconds on mobile
+if (window.innerWidth <= 600) {
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % 3;
+        currentSlide(currentIndex);
+    }, 5000);
+}
+
+// ----Daily Products----
 const cakeData = [
     {
-        img: "cheesecake.jfif",
+        img: "daily 1.jpg",
         title: "Cheese Cake",
         code: "DC-001",
         price: "3,000",
@@ -24,7 +58,7 @@ const cakeData = [
         bestfor: "Eggless & With Egg options"
     },
     {
-        img: "RedVelvetcake.jfif",
+        img: "daily 2.jpg",
         title: "Red Velvet Cake",
         code: "DC-002",
         price: "3,500",
@@ -36,7 +70,7 @@ const cakeData = [
         bestfor: "With Egg celebrations"
     },
     {
-        img: "RoseGoldCake.jfif",
+        img: "daily 3.jpg",
         title: "Rose Gold Cake",
         code: "DC-003",
         price: "3,000",
@@ -48,7 +82,7 @@ const cakeData = [
         bestfor: "Anniversaries and Engagements"
     },
     {
-        img: "CaramelCrunchCake.jfif",
+        img: "daily 4.jpg",
         title: "Caramel Crunch Cake",
         code: "DC-004",
         price: "3,000",
@@ -60,7 +94,7 @@ const cakeData = [
         bestfor: "Caramel Lovers"
     },
     {
-        img: "nakedlemoncake.jfif",
+        img: "daily 5.jpg",
         title: "Naked Lemon Cake",
         code: "DC-005",
         price: "3,000",
@@ -72,7 +106,7 @@ const cakeData = [
         bestfor: "Summer celebrations and Brunches"
     },
     {
-        img: "DutchTruffleCake.jfif",
+        img: "daily 6.jpg",
         title: "Dutch Truffle Cake",
         code: "DC-006",
         price: "3,000",
@@ -84,7 +118,7 @@ const cakeData = [
         bestfor: "Chocolate Lovers"
     },
     {
-        img: "velvelcocoaindulgence.jfif",
+        img: "daily 7.png",
         title: "Velvel Cocoa Indulgence Cake",
         code: "DC-007",
         price: "3,000",
@@ -96,7 +130,7 @@ const cakeData = [
         bestfor: "Birthdays & Celebrations"
     },
     {
-        img: "madagscarvanillabeancake.jfif",
+        img: "daily 8.jpg",
         title: "Madagascar Vanilla Bean Cake",
         code: "DC-008",
         price: "3,000",
@@ -150,14 +184,13 @@ function openPurchase(index) {
     window.open(url, 'PurchaseWindow', 'width=900,height=850,scrollbars=yes,resizable=yes');
 }
 
-// Boutique Form Handling
+// ----Contact US With GeoLocation API----
 const contactForm = document.querySelector('.boutique-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Simple success feedback
         const btn = contactForm.querySelector('button');
         const originalText = btn.innerText;
         

@@ -8,35 +8,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-maroon: #6D214F;
-            --soft-pink: #D4A5A5;
-            --off-white: #F9F7F2;
+            --primary: #4A0E0E;
+            --secondary: #F39D9D;
+            --background: #ffdede;
+            --text: #8B0000;
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--off-white);
+            background-color: var(--secondary);
             padding: 50px 0;
         }
         .detail-container {
-            background: white;
+            background: var(--background);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .cake-title {
             font-family: 'Pacifico', cursive;
-            color: var(--primary-maroon);
+            color: var(--primary);
             font-size: 3rem; 
         }
         .price-tag {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-maroon);
+            color: var(--primary);
             margin-bottom: 20px;
         }
         .btn-order-now {
-            background-color: var(--primary-maroon);
-            color: white;
+            background-color: var(--primary);
+            color: var(--background);
             padding: 12px 20px;
             border: none;
             border-radius: 8px;
@@ -45,28 +46,32 @@
             transition: 0.3s;
         }
         .btn-order-now:hover {
-            background-color: #4b1636;
-            color: white;
+            background-color: var(--primary);
+            color: var(--background);
         }
         .btn-back {
             background-color: transparent;
-            color: var(--primary-maroon);
+            color: var(--primary);
             padding: 12px 20px;
-            border: 2px solid var(--primary-maroon);
+            border: 2px solid var(--primary);
             border-radius: 8px;
             font-weight: 600;
             flex: 1;
             transition: 0.3s;
         }
         .btn-back:hover {
-            background-color: var(--primary-maroon);
-            color: white;
+            background-color: var(--primary);
+            color: var(--background);
         }
         .img-display {
             border-radius: 15px;
             width: 100%;
             object-fit: cover;
             max-height: 500px;
+            transition: 0.3s;
+        }
+        .img-display:hover {
+            transform: scale(1.2); 
         }
     </style>
 </head>
