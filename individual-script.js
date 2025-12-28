@@ -14,7 +14,6 @@
         container.innerHTML += card;
     });
 
-    // OPEN NEW WINDOW
     function openZoom(index) {
         const cake = cakeData[index];
         

@@ -10,12 +10,10 @@ window.addEventListener("scroll", () => {
     }
     lastScrollY = window.scrollY;
 });
-
     const menu = document.querySelector('#mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-
     menu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    navLinks.classList.toggle('active');
 });
 
 // ----about us----
@@ -24,18 +22,12 @@ let currentIndex = 0;
 function currentSlide(index) {
     const slider = document.getElementById('about-slider');
     const dots = document.querySelectorAll('.dot');
-    
-    // Move the slider
     slider.style.transform = `translateX(-${index * 100}%)`;
-    
-    // Update dots
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
-    
     currentIndex = index;
 }
 
-// Optional: Auto-slide every 5 seconds on mobile
 if (window.innerWidth <= 600) {
     setInterval(() => {
         currentIndex = (currentIndex + 1) % 3;
@@ -119,7 +111,7 @@ const cakeData = [
     },
     {
         img: "daily 7.png",
-        title: "Velvel Cocoa Indulgence Cake",
+        title: "Velvet Cocoa Indulgence Cake",
         code: "DC-007",
         price: "3,000",
         desc: "A rich and moist cocoa cake made with soft velvet layers, filled and coated with smooth chocolate cream.",
@@ -131,7 +123,7 @@ const cakeData = [
     },
     {
         img: "daily 8.jpg",
-        title: "Madagascar Vanilla Bean Cake",
+        title: "Vanilla Bean Cake",
         code: "DC-008",
         price: "3,000",
         desc: "Premium dessert made with real Madagascar vanilla beans, offering a sophisticated and deep aromatic flavor.",
@@ -184,23 +176,41 @@ function openPurchase(index) {
     window.open(url, 'PurchaseWindow', 'width=900,height=850,scrollbars=yes,resizable=yes');
 }
 
+function scrollCarousel(direction) {
+    const container = document.getElementById('all-products');
+    const cardWidth = document.querySelector('.product-card').offsetWidth + 20; 
+    container.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+    });
+}
+
+// -----Products By Events-----
+function scrollEvents(direction) {
+    const slider = document.getElementById('events-slider');
+    const card = document.querySelector('.category-card');
+    
+    if (slider && card) {
+        const moveAmount = card.offsetWidth + 20; 
+        slider.scrollBy({
+            left: direction * moveAmount,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // ----Contact US With GeoLocation API----
 const contactForm = document.querySelector('.boutique-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
         const btn = contactForm.querySelector('button');
         const originalText = btn.innerText;
-        
         btn.innerText = "Message Sent!";
         btn.style.backgroundColor = "#27ae60";
-        
         alert("Thank you! Our consultants will contact you shortly.");
-        
         contactForm.reset();
-        
         setTimeout(() => {
             btn.innerText = originalText;
             btn.style.backgroundColor = "";
