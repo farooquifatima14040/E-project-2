@@ -18,22 +18,52 @@ window.addEventListener("scroll", () => {
 
 // ----about us----
 let currentIndex = 0;
+const slider = document.getElementById('about-slider');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = dots.length;
+let autoSlide; // interval reference
 
-function currentSlide(index) {
-    const slider = document.getElementById('about-slider');
-    const dots = document.querySelectorAll('.dot');
+/* ===== Show Slide ===== */
+function showSlide(index) {
+    currentIndex = index;
     slider.style.transform = `translateX(-${index * 100}%)`;
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
-    currentIndex = index;
+    resetAutoSlide();
 }
 
-if (window.innerWidth <= 600) {
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % 3;
-        currentSlide(currentIndex);
-    }, 5000);
+/* ===== Next / Prev Arrows ===== */
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
 }
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+}
+
+/* ===== Dots Click ===== */
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => showSlide(i));
+});
+
+/* ===== Auto-Slide ===== */
+function startAutoSlide() {
+    autoSlide = setInterval(() => {
+        nextSlide();
+    }, 5000); // 5s interval
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+}
+
+/* ===== Initialize ===== */
+showSlide(currentIndex);
+startAutoSlide();
+
 
 // ----Daily Products----
 const cakeData = [

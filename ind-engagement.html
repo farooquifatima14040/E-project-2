@@ -12,8 +12,16 @@
 
 <header class="navbar">
     <a href="index.html" class="logo">The Cake</a>
+
+    <!-- HAMBURGER (NEW) -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
     <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="ind-birthday.html">Birthday</a></li>
             <li><a href="ind-anniversary.html">Anniversary</a></li>
             <li><a href="ind-wedding.html">Wedding</a></li>
@@ -26,6 +34,12 @@
 <h2 class="section-title">Engagement Cakes</h2>
 
 <div class="products-container" id="cake-gallery"></div>
+
+  <!-- Arrow buttons--> 
+         <button class="arrow prev" onclick="prevSlide()">❮</button>
+            <button class="arrow next" onclick="nextSlide()">❯</button>
+
+
 
 <footer class="site-footer">
     <div class="footer-container">

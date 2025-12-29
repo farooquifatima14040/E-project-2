@@ -36,3 +36,69 @@
     const url = `purchase.html?code=${encodeURIComponent(cake.code)}&title=${encodeURIComponent(cake.title)}&price=${cleanPrice}`;
     window.open(url, 'PurchaseWindow', 'width=900,height=850,scrollbars=yes,resizable=yes');
     }
+
+    // responsive navbar
+
+    function toggleMenu() {
+        document.getElementById("navLinks")?.classList.toggle("active");
+    }
+
+
+
+
+    // 
+    document.addEventListener("DOMContentLoaded", () => {
+    window.toggleMenu = toggleMenu;
+
+
+    const container =
+        document.querySelector(".products-container") ||
+        document.querySelector(".product-container") ||
+        document.querySelector(".products");
+
+    const cards = document.querySelectorAll(".product-card");
+    const dots = document.querySelectorAll(".dot");
+
+    if (!container || !cards.length) {
+        console.warn("Container ya cards nahi milay");
+        return;
+    }
+
+    const gap = 20;
+    const scrollAmount = cards[0].offsetWidth + gap;
+
+    /* ===== ARROWS ===== */
+    window.nextSlide = function () {
+        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    };
+
+    window.prevSlide = function () {
+        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    };
+
+    /* ===== DOT CLICK ===== */
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            container.scrollTo({
+                left: index * scrollAmount,
+                behavior: "smooth"
+            });
+        });
+    });
+
+    /* ===== DOT ACTIVE ON SCROLL ===== */
+    function updateDots() {
+        const index = Math.round(container.scrollLeft / scrollAmount);
+        dots.forEach(d => d.classList.remove("active"));
+        if (dots[index]) dots[index].classList.add("active");
+    }
+
+    container.addEventListener("scroll", updateDots);
+    updateDots();
+
+});
+
+
+
+
+

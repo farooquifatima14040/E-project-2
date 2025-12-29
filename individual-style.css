@@ -48,6 +48,55 @@ body {
     color: var(--primary);
 }
 
+/* ===== 3bars navbar ===== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: var(--primary);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--background);
+    border-radius: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--background);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/*Navbar End*/
+
 .section-title {
     text-align: center;
     margin: 40px 0;
@@ -160,4 +209,156 @@ body {
     padding-top: 20px; 
     border-top: 1px solid rgba(255,255,255,0.1); 
     font-size: 0.8rem; 
+}
+
+
+/*=====================*/
+/*individual Responsive*/
+/*=====================*/
+
+/* ===== Products Carousel ===== */
+@media (max-width: 1400px) {
+    .carousel-controls {
+        display: block; 
+    }
+
+    .carousel-wrapper {
+        position: relative;
+    }
+
+    .products-container {
+        display: flex; 
+        overflow-x: auto; /* fixed hidden -> auto */
+        scroll-behavior: smooth;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .product-card {
+        flex-shrink: 0;
+        width: 220px;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--primary);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .btn-details, .btn-order {
+        padding: 5px;
+        font-size: 0.75rem;
+        width: 100%;
+        margin: 2px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        width: 160px; 
+        padding: 10px;
+        height: 390px;
+    }
+    
+    .product-card img { height: 130px; }
+    
+    .btn-details, .btn-order {
+        padding: 5px;
+        font-size: 0.75rem;
+        width: 100%;
+        margin: 2px 0;
+    }
+}
+
+/* ===== Dots (desktop) ===== */
+@media(min-width: 601px){
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        background-color: var(--secondary);
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: var(--primary);
+    }
+}
+
+/* ===== Arrows (mobile) ===== */
+@media (max-width: 601px) {
+    .arrow {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color:#F39D9D;
+        background:#4A0E0E;
+        border: none;
+        font-size: 28px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        justify-content: center;
+        align-items: center;
+        transition: background 0.3s;
+    }
+
+    .arrow.prev {
+        left: 10px;
+    }
+
+    .arrow.next {
+        right: 10px;
+    }
+
+    .dots {
+        display: block;
+        text-align: center;
+        position: absolute;
+        bottom: 15px;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #ccc;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .dot.active {
+        background: #ff6b81;
+    }
+}
+
+/* Hide arrows and dots on desktop */
+@media (min-width: 768px) {
+    .arrow,
+    .dots {
+        display: none;
+    }
 }
