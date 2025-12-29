@@ -1,18 +1,54 @@
-    const container = document.getElementById('cake-gallery');
-    
-    cakeData.forEach((cake, index) => {
-        const card = `
-            <div class="product-card">
-                <img src="${cake.img}" alt="${cake.title}">
-                <p><strong>${cake.title}</strong></p>
-                <p>Code: ${cake.code}</p>
-                <p>Price: PKR ${cake.price}</p>
-                <button class="btn-details" onclick="openZoom(${index})">Details</button>
-                <button class="btn-order" onclick="openPurchase(${index})">Order</button>
-            </div>
-        `;
-        container.innerHTML += card;
+   const container = document.getElementById('cake-gallery');
+const dotsBox = document.getElementById("cake-dots");
+
+let index = 0; 
+
+/* ===== Render Cards ===== */
+cakeData.forEach((cake, i) => {
+    container.innerHTML += `
+        <div class="product-card">
+            <img src="${cake.img}" alt="${cake.title}">
+            <p><strong>${cake.title}</strong></p>
+            <p>Code: ${cake.code}</p>
+            <p>Price: PKR ${cake.price}</p>
+            <button class="btn-details" onclick="openZoom(${i})">Details</button>
+            <button class="btn-order" onclick="openPurchase(${i})">Order</button>
+        </div>
+    `;
+});
+
+/* ===== Create Dots ===== */
+cakeData.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.onclick = () => moveSlide(i);
+    dotsBox.appendChild(dot);
+});
+
+/* ===== Slide Function ===== */
+function moveSlide(i){
+    index = i;
+    container.style.transform = `translateX(-${i * 100}%)`;
+    updateDots();
+}
+
+function updateDots(){
+    dotsBox.querySelectorAll("span").forEach((dot, i)=>{
+        dot.classList.toggle("active", i === index);
     });
+}
+
+/* ===== Arrow Buttons ===== */
+function nextSlide(){
+    index = (index + 1) % cakeData.length;
+    moveSlide(index);
+}
+
+function prevSlide(){
+    index = (index - 1 + cakeData.length) % cakeData.length;
+    moveSlide(index);
+}
+
+updateDots();
 
     function openZoom(index) {
         const cake = cakeData[index];
@@ -46,59 +82,4 @@
 
 
 
-    // 
-    document.addEventListener("DOMContentLoaded", () => {
-    window.toggleMenu = toggleMenu;
-
-
-    const container =
-        document.querySelector(".products-container") ||
-        document.querySelector(".product-container") ||
-        document.querySelector(".products");
-
-    const cards = document.querySelectorAll(".product-card");
-    const dots = document.querySelectorAll(".dot");
-
-    if (!container || !cards.length) {
-        console.warn("Container ya cards nahi milay");
-        return;
-    }
-
-    const gap = 20;
-    const scrollAmount = cards[0].offsetWidth + gap;
-
-    /* ===== ARROWS ===== */
-    window.nextSlide = function () {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    };
-
-    window.prevSlide = function () {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    };
-
-    /* ===== DOT CLICK ===== */
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-            container.scrollTo({
-                left: index * scrollAmount,
-                behavior: "smooth"
-            });
-        });
-    });
-
-    /* ===== DOT ACTIVE ON SCROLL ===== */
-    function updateDots() {
-        const index = Math.round(container.scrollLeft / scrollAmount);
-        dots.forEach(d => d.classList.remove("active"));
-        if (dots[index]) dots[index].classList.add("active");
-    }
-
-    container.addEventListener("scroll", updateDots);
-    updateDots();
-
-});
-
-
-
-
-
+    
